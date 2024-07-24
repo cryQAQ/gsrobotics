@@ -20,6 +20,7 @@ def get_camera_id(camera_name):
     else:
         for file in os.listdir("/sys/class/video4linux"):
             real_file = os.path.realpath("/sys/class/video4linux/" + file + "/name")
+            print(f"real_file:{real_file}")
             with open(real_file, "rt") as name_file:
                 name = name_file.read().rstrip()
             if camera_name in name:
@@ -122,7 +123,3 @@ class Camera:
 
     def stop_video(self):
         cv2.destroyAllWindows()
-
-
-
-
